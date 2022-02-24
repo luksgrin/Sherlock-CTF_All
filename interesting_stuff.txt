@@ -1,0 +1,27 @@
+For brownie friends:
+
+add RPC to networks using this
+brownie networks add Ethereum sherlockctf host=https://ctf.sherlock.xyz/REPLACE_WITH_YOUR_SECRET chainid=5
+
+Then I added the accounts like this to my .env
+export account0=0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+export private0=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+export account1=0x70997970c51812dc3a010c7d01b50e0d17dc79c8
+export private1=0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d
+
+
+Here's a script to print out ETH balance
+from brownie import network, accounts
+from dotenv import dotenv_values
+
+def main():
+    account0 = accounts.add(dotenv_values(".env")["private1"])
+    print(account0)
+    print(account0.balance())
+
+if __name__ == '__main__':
+    main()
+
+
+run using 
+brownie run scriptname.py --network sherlockctf
